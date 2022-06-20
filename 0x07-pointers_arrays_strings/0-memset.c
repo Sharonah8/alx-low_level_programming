@@ -1,24 +1,19 @@
 #include "main.h"
-
 /**
- * _memset - fills a block of memory with a constant byte
- * @s: pointer to char params
- * @b: data to change
- * @n: number of bytes to be used
- * Return: *s
+ * _memcpy - memset function
+ * @dest: start point of string to change
+ * @src: value that will replace
+ * @n: number of bytes to change
+ * Return: changed pointer
  */
 
-char *_memset(char *s, char b, unsigned int n)
+char *_memcpy(char *dest, char *src, unsigned int n)
 {
 
-	unsigned int i;
+char *dest1 = dest;
+char *src1 = src;
+for (; n != 0; dest1++, n--, src1++)
+*dest1 = *src1;
+return (dest);
 
-	for (i = 0; i < n; i++)
-	{
-		s[i] = b;
-		i++;
-		n--;
-
-	}
-	return (s);
 }
