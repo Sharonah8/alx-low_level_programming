@@ -1,19 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
 /**
- * main - prints the minimum number of coins to make change for a given amount
- * @argc: arguement count
- * @argv: array of pointers to arguement strings
- * Return: number of coins or 1
- **/
-
+ * main - prints the minimum number of coins
+ * to make change for an amount of money
+ * @argc: n args
+ * @argv: arr args
+ * Return: 0
+ */
 int main(int argc, char *argv[])
 {
 
-	int amount, coins;
+	int value, c;
 
 
+	c = 0;
 	if (argc != 2)
 	{
 
@@ -21,42 +24,45 @@ int main(int argc, char *argv[])
 		return (1);
 
 	}
-	amount = atoi(argv[1]);
-	coins = 0;
-	if (amount > 25)
+	value = atoi(argv[1]);
+	if (value < 0)
 	{
 
-		while (amount >= 25)
-			amount -= 25, coins++;
+		printf("%d\n", 0);
+		return (0);
 
 	}
-	if (amount > 10 && amount < 25)
+	if (value % 25 >= 0)
 	{
 
-		while (amount >= 10)
-			amount -= 10, coins++;
+		c += value / 25;
+		value = value % 25;
 
 	}
-	if (amount > 5 && amount < 10)
+	if (value % 10 >= 0)
 	{
 
-		while (amount >= 5)
-			amount -= 5, coins++;
+		c += value / 10;
+		value = value % 10;
 
 	}
-	if (amount > 2 && amount < 5)
+	if (value % 5 >= 0)
 	{
 
-		while (amount >= 2)
-			amount -= 2, coins++;
+		c += value / 5;
+		value = value % 5;
 
 	}
-	if (amount == 1 || amount == 2 || amount == 5 || amount == 10 || amount == 25)
+	if (value % 2 >= 0)
+	{
+		c += value / 2;
+		value = value % 2;
+	}
+	if (value % 1 >= 0)
 	{
 
-		coins++;
-
+		c += value / 1;
 	}
-	printf("%d\n", coins);
+	printf("%d\n", c);
 	return (0);
 }
