@@ -7,6 +7,7 @@
  * @tab: The array to print
  * Return: nothing
  */
+
 void print_tab(char **tab)
 {
 	int i;
@@ -21,6 +22,7 @@ void print_tab(char **tab)
  * main - check the code for ALX School students.
  * Return: 1 if an error occurred, 0 otherwise
  */
+
 int main(void)
 {
 	char **tab;
